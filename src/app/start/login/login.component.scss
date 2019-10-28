@@ -1,0 +1,17 @@
+@import "../../../css/variables";
+
+.login-button-container {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  a {
+    color: $imok-blue;
+  }
+}
+
+.create-master-button-container {
+  margin-top: 50px;
+  button {
+    width: 100%;
+  }
+}

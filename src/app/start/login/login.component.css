@@ -1,0 +1,17 @@
+.login-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.login-button-container a {
+  color: #106cc8;
+}
+
+.create-master-button-container {
+  margin-top: 50px;
+}
+.create-master-button-container button {
+  width: 100%;
+}
+
+/*# sourceMappingURL=login.component.css.map */

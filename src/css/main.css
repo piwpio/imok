@@ -1,0 +1,70 @@
+/** material **/
+button.mat-green {
+  color: #FFFFFF;
+  background-color: #0EBE2C;
+}
+button.mat-blue {
+  color: #FFFFFF;
+  background-color: #106cc8;
+}
+button.mat-white {
+  color: #000000;
+  background-color: #FFFFFF;
+  height: 38px;
+}
+button.imok-button-min-width {
+  min-width: 100px !important;
+}
+
+.input-blue.mat-focused .mat-form-field-label {
+  color: #106cc8 !important;
+}
+.input-blue.mat-focused .mat-form-field-underline span {
+  background: #106cc8 !important;
+}
+
+/** forms **/
+.imok-form fieldset {
+  border: none;
+}
+.imok-form fieldset mat-form-field {
+  width: 100%;
+}
+
+/** other globals**/
+.flex-container {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-container > .flex-container-width-100-procent-wrapper {
+  width: 100%;
+}
+
+.imok-header {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: #0EBE2C;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 24px;
+  line-height: 60px;
+}
+
+.imok-view-container {
+  margin-top: 60px;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/*# sourceMappingURL=main.css.map */

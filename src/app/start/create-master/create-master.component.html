@@ -1,0 +1,29 @@
+<div class="imok-view-container">
+  <div class="flex-container">
+    <div class="flex-container-width-100-procent-wrapper">
+      <form class="imok-form" [formGroup]="createMasterForm" (ngSubmit)="submitLogin(createMasterForm.value)">
+        <fieldset>
+          <mat-form-field class="input-blue">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-label>Numer telefonu</mat-label>
+            <input matInput type="number" formControlName="phone" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-label>Hasło</mat-label>
+            <input matInput type="password" formControlName="password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-label>Hasło</mat-label>
+            <input matInput type="password" formControlName="repassword" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <div class="create-master-button-container">
+            <button class="button-create-master imok-button-min-width" mat-flat-button color="blue" type="submit" [disabled]="createMasterForm.invalid">Utwórz konto</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="imok-view-container">
+  <div class="flex-container">
+      <div class="flex-container-width-100-procent-wrapper">
+          <form class="imok-form" [formGroup]="loginForm" (ngSubmit)="submitLogin(loginForm.value)">
+              <fieldset>
+                  <mat-form-field class="input-blue">
+                      <mat-label>E-mail</mat-label>
+                      <input matInput formControlName="email">
+                  </mat-form-field>
+                  <mat-form-field class="input-blue">
+                      <mat-label>Hasło</mat-label>
+                      <input matInput type="password" formControlName="password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                  </mat-form-field>
+                  <div class="login-button-container">
+                      <a class="button-forgot"
+                         (click)="goToPasswordReset($event)"
+                         >Zapomniałem hasła </a>
+                      <button class="button-login imok-button-min-width" mat-flat-button color="blue" type="submit" [disabled]="loginForm.invalid">Zaloguj</button>
+                  </div>
+                  <div class="create-master-button-container">
+                      <button class="button-new-account imok-button-min-width" mat-stroked-button color="white"
+                      (click)="goToCreateMaster($event)"
+                      >Załóż nowe konto</button>
+                  </div>
+              </fieldset>
+          </form>
+      </div>
+  </div>
+</div>
