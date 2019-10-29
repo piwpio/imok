@@ -2,11 +2,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
-
-interface LoginForm {
-  email: string;
-  password: string;
-}
+import {LoginForm} from '../../../models/form-data.model';
 
 @Component({
   selector: 'app-login',

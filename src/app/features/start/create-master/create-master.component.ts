@@ -1,13 +1,7 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
-
-interface CreateMasterForm {
-  email: string;
-  phone: string;
-  password: string;
-  repassword: string;
-}
+import {CreateMasterForm} from '../../../models/form-data.model';
 
 @Component({
   selector: 'app-create-master',

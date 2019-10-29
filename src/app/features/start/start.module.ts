@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { StartComponent } from './start.component';
 import { IonicModule } from '@ionic/angular';
 import { CreateMasterComponent } from './create-master/create-master.component';
-import {MaterialModule} from '../material.module';
+import {MaterialModule} from '../../material.module';
 import {PasswordResetComponent} from './password-reset/password-reset.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HeaderStartComponent} from './header-start/header-start.component';
