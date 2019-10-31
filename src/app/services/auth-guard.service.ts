@@ -7,7 +7,7 @@ import {UserModel} from '../models/user.model';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  private user: UserModel;
+  readonly user: UserModel;
 
   constructor(
     private router: Router,
@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     console.log('can activate', this.user);
     if (!this.user.isLogged) {
-      this.router.navigate(['/start/createmaster']);
+      this.router.navigate(['start/login']);
     }
 
     return this.user.isLogged;

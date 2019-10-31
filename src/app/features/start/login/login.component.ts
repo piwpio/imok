@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import {LoginForm} from '../../../models/form-data.model';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,22 +17,31 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private zone: NgZone,
     private snackBar: MatSnackBar,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['', Validators.required],
-        password: ['', Validators.required]
+        email: ['pp@p.com', Validators.required],
+        password: ['asd', Validators.required]
       }
     );
   }
 
   submitLogin(loginFormValues: LoginForm) {
-    this.zone.run(() => {
-      this.snackBar.open('Login');
-    });
+    this.userService.logIn(loginFormValues.email, loginFormValues.password)
+      .subscribe(user => {
+        if (user.isLogged) {
+          this.userService.setUser(user);
+          this.router.navigate(['master/dashboard']);
+        } else {
+          this.zone.run(() => {
+            this.snackBar.open('Niepoprawny login lub hasło');
+          });
+        }
+      });
   }
 
   goToCreateMaster(event: Event) {

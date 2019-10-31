@@ -14,8 +14,8 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/materia
 
 @NgModule({
   declarations: [
-    HeaderStartComponent,
     StartComponent,
+    HeaderStartComponent,
     LoginComponent,
     CreateMasterComponent,
     PasswordResetComponent

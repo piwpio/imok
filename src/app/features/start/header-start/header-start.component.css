@@ -1,4 +1,4 @@
-.back-arrow-container {
+#back-arrow-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -6,7 +6,7 @@
   height: 60px;
   padding: 10px;
 }
-.back-arrow-container .back-arrow {
+#back-arrow-container #back-arrow {
   position: absolute;
   top: 18px;
   left: 24px;

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {DEFAULT_USER, UserModel} from '../models/user.model';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,24 @@ export class UserService {
   }
 
   setUser(user: UserModel | null) {
+    localStorage.setItem('user', JSON.stringify(user));
     this.user = user;
   }
 
-  isLogged() {
-    return this.user !== null && this.user.isLogged;
+  logIn(email: string, password: string): Observable<UserModel> {
+    return new Observable<UserModel>((observer) => {
+      if (email === 'pp@p.com' && password === 'asd') {
+        const loggedTestUser: UserModel = {
+          id: 1,
+          name: 'Piotr Piwowar',
+          token: 'token',
+          isLogged: true
+        };
+        observer.next(loggedTestUser);
+      } else {
+        observer.next(DEFAULT_USER);
+      }
+      observer.complete();
+    });
   }
 }

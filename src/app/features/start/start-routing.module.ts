@@ -4,16 +4,14 @@ import {StartComponent} from './start.component';
 import {LoginComponent} from './login/login.component';
 import {CreateMasterComponent} from './create-master/create-master.component';
 import {PasswordResetComponent} from './password-reset/password-reset.component';
-import {AuthGuard} from '../../services/auth-guard.service';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'start', pathMatch: 'full' },
   {
-    path: 'start', component: StartComponent,
+    path: '', component: StartComponent,
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
+      { path: 'login', component: LoginComponent},
       { path: 'createmaster', component: CreateMasterComponent },
       { path: 'passwordreset', component: PasswordResetComponent }
     ]
