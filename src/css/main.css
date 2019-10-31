@@ -1,4 +1,7 @@
 /** material **/
+button {
+  box-shadow: none !important;
+}
 button.mat-green {
   color: #FFFFFF;
   background-color: #0EBE2C;

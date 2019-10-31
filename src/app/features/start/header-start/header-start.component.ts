@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -7,7 +7,8 @@ import { filter } from 'rxjs/operators';
   templateUrl: './header-start.component.html',
   styleUrls: ['./header-start.component.scss'],
 })
-export class HeaderStartComponent implements OnInit {
+export class HeaderStartComponent implements OnInit, OnDestroy {
+  private router$: any;
   public headerTitle: string;
   public navigateBackTo: string;
 
@@ -16,7 +17,7 @@ export class HeaderStartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.router.events
+    this.router$ = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe( (route: NavigationEnd) => {
           this.setHeader(route.url.replace('/start/', ''));
@@ -59,4 +60,7 @@ export class HeaderStartComponent implements OnInit {
     this.navigateBackTo = 'start/login';
   }
 
+  ngOnDestroy(): void {
+    this.router$.unsubscribe();
+  }
 }

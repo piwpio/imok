@@ -1,3 +1,5 @@
+@import '../../../../css/variables';
+
 #menu-icon-container {
   position: absolute;
   top:0;
@@ -17,12 +19,14 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  visibility: hidden;
-  transition: visibility .3s linear;
+  background-color: $imok-black;
+  margin-left: -100%;
+  opacity: 0;
+  transition: opacity .3s linear;
 
   &.side-menu-opened {
-    visibility: visible;
+    margin-left: 0;
+    opacity: 0.5
   }
 }
 
@@ -37,4 +41,36 @@
   &.side-menu-opened {
     margin-left: 0;
   }
+
+  li {
+    &.avtive-menu-item {
+      background: red;
+    }
+  }
 }
+
+#settings-logout-container {
+  display: flex;
+  flex-direction: row;
+  > div {
+    flex: 1;
+    height:60px;
+    button {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      border-bottom: 1px solid $imok-line-separator;
+      &#button-settings {
+        border-right: 1px solid $imok-line-separator
+      }
+    }
+  }
+}
+
+#menu-list-container {
+
+}
+
+

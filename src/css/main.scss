@@ -2,6 +2,8 @@
 
 /** material **/
 button {
+  box-shadow: none !important;
+
   &.mat-green {
     color: $imok-white;
     background-color: $imok-green;

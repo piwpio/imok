@@ -1,13 +1,33 @@
 <div class="imok-header">
-  <button id="menu-icon-container" mat-flat-button color="green" (click)="openSideMenu()">
+  <button id="menu-icon-container" mat-fab color="green" (click)="openSideMenu()">
     <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="white" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
   </button>
   <span class="title">{{ headerTitle }}</span>
 </div>
-<div id="side-menu-overlay" [ngClass]="{'side-menu-opened': sideMenuOpened}"></div>
+<div id="side-menu-overlay" [ngClass]="{'side-menu-opened': sideMenuOpened}"
+     (click)="closeSideMenu()">
+</div>
 <div id="side-menu" [ngClass]="{'side-menu-opened': sideMenuOpened}">
-  <button mat-flat-button color="green" (click)="closeSideMenu()">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M3 18h13v-2H3v2zm0-5h10v-2H3v2zm0-7v2h13V6H3zm18 9.59L17.42 12 21 8.41 19.59 7l-5 5 5 5L21 15.59z"/></svg>
-  </button>
+  <div id="settings-logout-container">
+    <div>
+      <button id="button-settings" mat-flat-button color="white" (click)="goTo('settings')">Ustawienia</button>
+    </div>
+    <div>
+      <button id="button-logout" mat-flat-button color="white" (click)="userLogout()">Wyloguj</button>
+    </div>
+  </div>
+  <div id="menu-list-container">
+    <ul>
+      <li>
+        <button id="button-dashboard" mat-flat-button color="white" (click)="goTo('dashboard')">Ekran główny</button>
+      </li>
+      <li>
+        <button id="button-slaves" mat-flat-button color="white" (click)="goTo('slaves')">Zarządzaj podopiecznymi</button>
+      </li>
+    </ul>
+  </div>
+<!--  <button mat-flat-button color="green" (click)="closeSideMenu()">-->
+<!--    <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M3 18h13v-2H3v2zm0-5h10v-2H3v2zm0-7v2h13V6H3zm18 9.59L17.42 12 21 8.41 19.59 7l-5 5 5 5L21 15.59z"/></svg>-->
+<!--  </button>-->
 </div>
 

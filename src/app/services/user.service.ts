@@ -48,4 +48,9 @@ export class UserService {
       observer.complete();
     });
   }
+
+  logOut() {
+    localStorage.removeItem('user');
+    this.user = DEFAULT_USER;
+  }
 }
