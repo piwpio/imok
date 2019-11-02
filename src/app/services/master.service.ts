@@ -33,6 +33,10 @@ export class MasterService {
           name: 'Stefan Gunia',
           isOk: true,
           phone: '333222111',
+          lastLocation: {
+            lat: 0,
+            long: 0
+          }
         }
       ];
 

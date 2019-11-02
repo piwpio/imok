@@ -22,7 +22,7 @@
   background-color: $imok-black;
   margin-left: -100%;
   opacity: 0;
-  transition: opacity .3s linear;
+  transition: opacity .15s linear;
 
   &.side-menu-opened {
     margin-left: 0;
@@ -36,8 +36,7 @@
   height: 100%;
   background-color: $imok-green;
   margin-left: -80%;
-  transition: margin-left .3s linear;
-  //opacity: 0.5;
+  transition: margin-left .15s linear;
 
   &.side-menu-opened {
     margin-left: 0;

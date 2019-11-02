@@ -8,18 +8,26 @@ button {
     color: $imok-white;
     background-color: $imok-green;
   }
+
   &.mat-blue {
     color: $imok-white;
     background-color: $imok-blue;
   }
+
   &.mat-white {
     color: $imok-black;
     background-color: $imok-white;
+  }
+  &.mat-stroked-botton.mat-white {
     height: 38px;
   }
 
   &.imok-button-min-width {
     min-width: $imok-button-min-width;
+  }
+
+  &.mat-mini-fab.mat-white {
+    border: 1px solid $imok-border-white;
   }
 }
 

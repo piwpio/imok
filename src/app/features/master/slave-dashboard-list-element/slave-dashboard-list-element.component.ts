@@ -10,8 +10,13 @@ export class SlaveDashboardListElementComponent implements OnInit {
   @Input()
   slave: SlaveModel;
 
+  public isLastLocation;
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit(
+  ) {
+    this.isLastLocation = this.slave.lastLocation !== undefined && this.slave.lastLocation !== null;
+  }
 
 }

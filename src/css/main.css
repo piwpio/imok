@@ -13,10 +13,15 @@ button.mat-blue {
 button.mat-white {
   color: #000000;
   background-color: #FFFFFF;
+}
+button.mat-stroked-botton.mat-white {
   height: 38px;
 }
 button.imok-button-min-width {
   min-width: 100px !important;
+}
+button.mat-mini-fab.mat-white {
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .input-blue.mat-focused .mat-form-field-label {

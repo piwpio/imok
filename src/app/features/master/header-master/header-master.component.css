@@ -19,7 +19,7 @@
   background-color: #000000;
   margin-left: -100%;
   opacity: 0;
-  transition: opacity 0.3s linear;
+  transition: opacity 0.15s linear;
 }
 #side-menu-overlay.side-menu-opened {
   margin-left: 0;
@@ -32,7 +32,7 @@
   height: 100%;
   background-color: #0EBE2C;
   margin-left: -80%;
-  transition: margin-left 0.3s linear;
+  transition: margin-left 0.15s linear;
 }
 #side-menu.side-menu-opened {
   margin-left: 0;
