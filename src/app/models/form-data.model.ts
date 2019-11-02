@@ -10,6 +10,13 @@ export interface CreateMasterForm {
   repassword: string;
 }
 
+export interface CreateSlaveForm {
+  name: string;
+  pin: string;
+  repin: string;
+  phone: string;
+}
+
 export interface PasswordResetForm {
   email: string;
 }

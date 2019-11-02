@@ -7,7 +7,17 @@
   border: 1px solid $imok-border-white;
   border-radius: 4px;
   min-height: 50px;
-  margin-top: 6px;
+  margin-top: 10px;
+
+  &.element-is-not-ok {
+    box-shadow: 0 0 0 2pt $imok-white;
+    animation: blinking 4s infinite;
+    @keyframes blinking {
+      50% {
+        box-shadow: 0 0 0 2pt $imok-red;
+      }
+    }
+  }
 
   .slave-dashboard-bell-notification {
     position: relative;

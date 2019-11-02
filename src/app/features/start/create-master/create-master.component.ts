@@ -28,7 +28,7 @@ export class CreateMasterComponent implements OnInit {
     );
   }
 
-  submitLogin(createMasterForm: CreateMasterForm) {
+  submitCreateMaster(createMasterForm: CreateMasterForm) {
     console.log(createMasterForm);
     this.zone.run(() => {
       this.snackBar.open('Utwórz konto');

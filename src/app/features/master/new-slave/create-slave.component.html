@@ -1,0 +1,29 @@
+<div class="imok-view-container">
+  <div class="flex-container">
+    <div class="flex-container-width-100-procent-wrapper">
+      <form class="imok-form" [formGroup]="createSlaveForm" (ngSubmit)="submitCreateSlave(createSlaveForm.value)">
+        <fieldset>
+          <mat-form-field class="input-blue">
+            <mat-label>Nazwa</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-label>PIN</mat-label>
+            <input matInput type="number" formControlName="pin" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-label>Powtórz PIN</mat-label>
+            <input matInput type="number" formControlName="repin" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-label>Numer telefonu</mat-label>
+            <input matInput type="number" formControlName="phone" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <div class="create-master-button-container">
+            <button class="button-create-master imok-button-min-width" mat-flat-button color="blue" type="submit" [disabled]="createSlaveForm.invalid">Utwórz podopiecznego</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

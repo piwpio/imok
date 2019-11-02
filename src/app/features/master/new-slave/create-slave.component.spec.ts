@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewSlaveComponent } from './new-slave.component';
+import { CreateSlaveComponent } from './create-slave.component';
 
 describe('NewSlaveComponent', () => {
-  let component: NewSlaveComponent;
-  let fixture: ComponentFixture<NewSlaveComponent>;
+  let component: CreateSlaveComponent;
+  let fixture: ComponentFixture<CreateSlaveComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewSlaveComponent ],
+      declarations: [ CreateSlaveComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewSlaveComponent);
+    fixture = TestBed.createComponent(CreateSlaveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
