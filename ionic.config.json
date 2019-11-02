@@ -1,5 +1,7 @@
 {
   "name": "imok",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,3 +1,7 @@
-
+#no-slaves button {
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+}
 
 /*# sourceMappingURL=master-dashboard.component.css.map */

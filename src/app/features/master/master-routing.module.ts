@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {AuthGuard} from '../../services/auth-guard.service';
 import {MasterComponent} from './master.component';
 import {MasterDashboardComponent} from './master-dashboard/master-dashboard.component';
+import {NewSlaveComponent} from './new-slave/new-slave.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: MasterDashboardComponent},
+      { path: 'new-slave', component: NewSlaveComponent},
     ]
   }
 ];

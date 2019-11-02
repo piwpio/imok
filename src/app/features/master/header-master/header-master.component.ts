@@ -12,7 +12,7 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
   private router$: any;
   public headerTitle: string;
   public sideMenuOpened = false;
-  public selectedTab = 'dashboard';
+  public selectedTab: string;
 
   constructor(
     private router: Router,
@@ -34,6 +34,9 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
       case 'dashboard':
         this.setForDashboard();
         break;
+      case 'new-slave':
+        this.setForNewSlave();
+        break;
       default:
         this.setForDashboard();
     }
@@ -52,13 +55,23 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
     this.selectedTab = `dashboard`;
   }
 
+  setForNewSlave() {
+    this.headerTitle = `Dodaj podopiecznego`;
+    this.selectedTab = `new-slave`;
+  }
+
   userLogout() {
     this.userService.logOut();
+    this.closeSideMenu();
     this.router.navigate(['start/login']);
   }
 
   goTo(route: string) {
-    this.router.navigate([`master/${{route}}`]);
+    if (route !== this.selectedTab) {
+      console.log(route, `master/${route}`);
+      this.router.navigate([`master/${route}`]);
+      this.closeSideMenu();
+    }
   }
 
   ngOnDestroy(): void {

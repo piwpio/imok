@@ -8,13 +8,17 @@ import {MasterDashboardComponent} from './master-dashboard/master-dashboard.comp
 import {MasterRoutingModule} from './master-routing.module';
 import {MasterComponent} from './master.component';
 import {HeaderMasterComponent} from './header-master/header-master.component';
+import {NewSlaveComponent} from './new-slave/new-slave.component';
+import {SlaveDashboardListElementComponent} from './slave-dashboard-list-element/slave-dashboard-list-element.component';
 
 
 @NgModule({
   declarations: [
     MasterComponent,
     HeaderMasterComponent,
-    MasterDashboardComponent
+    MasterDashboardComponent,
+    SlaveDashboardListElementComponent,
+    NewSlaveComponent
   ],
   imports: [
     MasterRoutingModule,

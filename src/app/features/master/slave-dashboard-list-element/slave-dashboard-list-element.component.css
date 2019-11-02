@@ -1,0 +1,8 @@
+.slave-dashboard-list-element {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+/*# sourceMappingURL=slave-dashboard-list-element.component.css.map */
