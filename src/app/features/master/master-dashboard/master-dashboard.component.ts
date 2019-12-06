@@ -1,4 +1,4 @@
-import {Component, NgZone, OnInit} from '@angular/core';
+import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {SlaveModel} from '../../../models/slave.model';
 import {Router} from '@angular/router';
 import {UserService} from '../../../services/user.service';
@@ -9,8 +9,8 @@ import {MatSnackBar} from '@angular/material';
   templateUrl: './master-dashboard.component.html',
   styleUrls: ['./master-dashboard.component.scss'],
 })
-export class MasterDashboardComponent implements OnInit {
-  public slaves: Array<SlaveModel> = [];
+export class MasterDashboardComponent implements OnInit, OnDestroy {
+  public slaves: Array<SlaveModel> | null = [];
 
   constructor(
     private router: Router,
@@ -20,6 +20,11 @@ export class MasterDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.slaves = null;
+  }
+
+  ionViewWillEnter() {
+    this.slaves = null;
     this.userService.getSlaves().subscribe(response => {
       if (response.ok) {
         this.slaves = response.data;
@@ -39,4 +44,7 @@ export class MasterDashboardComponent implements OnInit {
     this.router.navigate(['master/new-slave']);
   }
 
+  ngOnDestroy(): void {
+    console.log('destroy dashboard');
+  }
 }

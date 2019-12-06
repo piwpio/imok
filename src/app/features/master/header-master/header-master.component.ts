@@ -70,8 +70,8 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
     if (route !== this.selectedTab) {
       console.log(route, `master/${route}`);
       this.router.navigate([`master/${route}`]);
-      this.closeSideMenu();
     }
+    this.closeSideMenu();
   }
 
   ngOnDestroy(): void {
