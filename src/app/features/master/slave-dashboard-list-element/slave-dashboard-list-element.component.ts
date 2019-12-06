@@ -10,8 +10,7 @@ import {Router} from '@angular/router';
 export class SlaveDashboardListElementComponent implements OnInit {
   @Input()
   slave: SlaveModel;
-
-  public isLastLocation;
+  public lastLocation;
 
   constructor(
     private router: Router
@@ -19,11 +18,19 @@ export class SlaveDashboardListElementComponent implements OnInit {
 
   ngOnInit(
   ) {
-    console.log(this.slave);
-    this.isLastLocation = this.slave.lastLocations.length;
+    this.slave.lastLocations = [{
+      lat: 50.0582514,
+      long: 19.947557,
+      time: 1575664894885
+    }];
+    this.lastLocation = this.slave.lastLocations.length ? this.slave.lastLocations[0] : null;
   }
 
-  goToSlaveEdit() {
+  goToSlaveManage() {
     this.router.navigate(['master/slave-info', this.slave.id]);
+  }
+
+  goToMap(lat: number, long: number) {
+    this.router.navigate(['master/slave-map', lat, long]);
   }
 }

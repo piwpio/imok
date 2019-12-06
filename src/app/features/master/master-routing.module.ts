@@ -6,6 +6,7 @@ import {MasterDashboardComponent} from './master-dashboard/master-dashboard.comp
 import {CreateSlaveComponent} from './new-slave/create-slave.component';
 import {SlaveEditComponent} from './slave-edit/slave-edit.component';
 import {SlaveComponent} from './slave/slave.component';
+import {SlaveMapComponent} from './slave-map/slave-map.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
       { path: 'dashboard', component: MasterDashboardComponent},
       { path: 'new-slave', component: CreateSlaveComponent},
       { path: 'slave-edit', component: SlaveEditComponent},
-      { path: 'slave-info/:id', component: SlaveComponent}
+      { path: 'slave-info/:id', component: SlaveComponent},
+      { path: 'slave-map/:lat/:long', component: SlaveMapComponent}
     ]
   }
 ];

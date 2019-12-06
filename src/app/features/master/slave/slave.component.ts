@@ -2,7 +2,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {SlaveModel} from '../../../models/slave.model';
 import {UserService} from '../../../services/user.service';
 import {Subscription} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SlaveManageForm} from '../../../models/form-data.model';
@@ -31,7 +31,8 @@ export class SlaveComponent implements OnInit {
     private route: ActivatedRoute,
     private zone: NgZone,
     private snackBar: MatSnackBar,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -92,6 +93,10 @@ export class SlaveComponent implements OnInit {
         this.snackBar.open(error.error);
       });
     });
+  }
+
+  goToMap(lat: number, long: number) {
+    this.router.navigate(['master/slave-map', lat, long]);
   }
 
 }

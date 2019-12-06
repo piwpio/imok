@@ -12,6 +12,8 @@ import {CreateSlaveComponent} from './new-slave/create-slave.component';
 import {SlaveDashboardListElementComponent} from './slave-dashboard-list-element/slave-dashboard-list-element.component';
 import {SlaveEditComponent} from './slave-edit/slave-edit.component';
 import {SlaveComponent} from './slave/slave.component';
+import {AgmCoreModule, GoogleMapsAPIWrapper, MapsAPILoader} from '@agm/core';
+import {SlaveMapComponent} from './slave-map/slave-map.component';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import {SlaveComponent} from './slave/slave.component';
     SlaveDashboardListElementComponent,
     CreateSlaveComponent,
     SlaveEditComponent,
-    SlaveComponent
+    SlaveComponent,
+    SlaveMapComponent
   ],
   imports: [
     MasterRoutingModule,
@@ -30,9 +33,13 @@ import {SlaveComponent} from './slave/slave.component';
     IonicModule,
     MaterialModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBE2RLbpSTs7_LhsFqCgTc2jjV14Xlv6Ys'
+    })
   ],
   providers: [
+    GoogleMapsAPIWrapper,
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 3000}}
   ]
 })

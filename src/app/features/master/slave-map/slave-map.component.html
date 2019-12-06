@@ -1,0 +1,17 @@
+<div class="imok-view-container">
+ <div id="map-container" *ngIf="longitude && latitude">
+   <agm-map
+     [disableDefaultUI]="true"
+     [latitude]="0"
+     [longitude]="0"
+     [zoom]="12"
+     [scaleControl]="true"
+     [mapTypeControl]="false"
+     [disableDoubleClickZoom]="true"
+     [streetViewControl]="false"
+     (mapReady)="mapReady($event)"
+   >
+   </agm-map>
+ </div>
+</div>
+

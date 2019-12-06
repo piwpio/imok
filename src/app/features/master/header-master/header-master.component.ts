@@ -14,6 +14,7 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
   public sideMenuOpened = false;
   public selectedTab: string;
   public navigateBackTo: string;
+  public param: string;
 
   constructor(
     private router: Router,
@@ -25,12 +26,14 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe( (route: NavigationEnd) => {
         // TODO
-        const param = route.url.replace('/master/', '').split('/')[0];
-        this.setHeader(param);
+        const split = route.url.replace('/master/', '').split('/');
+        const url = split[0];
+        const param = split[1] !== undefined ? split[1] : null;
+        this.setHeader(url, param);
       });
   }
 
-  setHeader(url: string) {
+  setHeader(url: string, param: string) {
     console.log(url);
     switch (url) {
       case 'dashboard':
@@ -40,15 +43,14 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
         this.setForNewSlave();
         break;
       case 'slave-info':
-        this.setForSlaveInfo();
+        this.setForSlaveInfo(param);
+        break;
+      case 'slave-map':
+        this.setForSlaveMap();
         break;
       default:
         this.setForDashboard();
     }
-  }
-
-  goBack() {
-    this.router.navigate([this.navigateBackTo]);
   }
 
   openSideMenu() {
@@ -63,18 +65,31 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
     this.headerTitle = `Dashboard`;
     this.selectedTab = `dashboard`;
     this.navigateBackTo = null;
+    this.param = null;
   }
 
   setForNewSlave() {
     this.headerTitle = `Dodaj podopiecznego`;
     this.selectedTab = `new-slave`;
     this.navigateBackTo = null;
+    this.param = null;
   }
 
-  setForSlaveInfo() {
+  setForSlaveInfo(param) {
     this.headerTitle = `Podopieczny`;
     this.selectedTab = `slave-info`;
     this.navigateBackTo = 'master/dashboard';
+    this.param = param;
+  }
+
+  setForSlaveMap() {
+    this.headerTitle = `Lokalizacja`;
+    this.selectedTab = `slave-map`;
+    if (!this.param) {
+      this.navigateBackTo = 'master/dashboard';
+    } else {
+      this.navigateBackTo = 'master/slave-info';
+    }
   }
 
   userLogout() {
@@ -89,6 +104,15 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
       this.router.navigate([`master/${route}`]);
     }
     this.closeSideMenu();
+  }
+
+  goBack() {
+    console.log(this.navigateBackTo, this.param);
+    if (this.param && this.selectedTab === 'slave-map') {
+      this.router.navigate([this.navigateBackTo, this.param]);
+    } else {
+      this.router.navigate([this.navigateBackTo]);
+    }
   }
 
   ngOnDestroy(): void {
