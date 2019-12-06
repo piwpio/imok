@@ -1,13 +1,11 @@
 <div class="imok-view-container">
-<!--  <div *ngIf="!slaves.length" id="no-slaves" class="imok-view-padding">-->
-  <div id="no-slaves" class="imok-view-padding">
+  <div *ngIf="!!slaves.length" id="no-slaves" class="imok-view-padding">
     Brak podopiecznych. Kliknij przycisk poniżej aby utworzyć jednego z nich!
     <button mat-stroked-button color="white" (click)="goToCreateNewSlaveView();">
       Utwórz podopiecznego
     </button>
   </div>
-<!--  <div *ngIf="!!slaves.length" id="slaves-list" class="imok-view-padding">-->
-  <div id="slaves-list" class="imok-view-padding">
+  <div *ngIf="!!slaves.length" id="slaves-list" class="imok-view-padding">
     <app-slave-dashboard-list-element
       *ngFor="let slave of slaves"
       [slave]="slave"

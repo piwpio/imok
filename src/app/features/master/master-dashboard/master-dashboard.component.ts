@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {MasterService} from '../../../services/master.service';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {SlaveModel} from '../../../models/slave.model';
 import {Router} from '@angular/router';
+import {UserService} from '../../../services/user.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-master-dashboard',
@@ -13,15 +14,25 @@ export class MasterDashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private masterService: MasterService
+    private userService: UserService,
+    private zone: NgZone,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
-    this.masterService.getSlaves()
-      .subscribe(slaves => {
-        console.log(slaves);
-        this.slaves = slaves;
+    this.userService.getSlaves().subscribe(response => {
+      if (response.ok) {
+        this.slaves = response.data;
+      } else {
+        this.zone.run(() => {
+          this.snackBar.open(response.message);
+        });
+      }
+    }, error => {
+      this.zone.run(() => {
+        this.snackBar.open(error.error);
       });
+    });
   }
 
   goToCreateNewSlaveView() {

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {CreateMasterForm} from '../../../models/form-data.model';
 import {UserService} from '../../../services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-master',
@@ -16,7 +17,8 @@ export class CreateMasterComponent implements OnInit {
     private zone: NgZone,
     private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,7 +36,10 @@ export class CreateMasterComponent implements OnInit {
   submitCreateMaster(createMasterForm: CreateMasterForm) {
     this.userService.createMaster(createMasterForm).subscribe(response => {
       if (response.ok) {
-        //
+        this.zone.run(() => {
+          this.snackBar.open('Utworzono nowe konto. Teraz możesz się zalogować.');
+        });
+        this.router.navigate(['start/login']);
       } else {
         this.zone.run(() => {
           this.snackBar.open(response.message);

@@ -36,16 +36,25 @@ export class UserService {
     this.user = user;
   }
 
-  logIn(body): Observable<any> {
-    return this.http.post<any>(`${API_BASE_URL}/login`, body);
-  }
-
   logOut() {
     localStorage.removeItem('user');
     this.user = DEFAULT_USER;
   }
 
+  logIn(body): Observable<any> {
+    return this.http.post<any>(`${API_BASE_URL}/login`, body);
+  }
+
   createMaster(body): Observable<any> {
     return this.http.post<any>(`${API_BASE_URL}/createmaster`, body);
+  }
+
+  getSlaves() {
+    return this.http.post<any>(`${API_BASE_URL}/masterslaves`, {token: this.user.token});
+  }
+
+  createSlave(body): Observable<any> {
+    body.token = this.user.token;
+    return this.http.post<any>(`${API_BASE_URL}/createslave`, body);
   }
 }
