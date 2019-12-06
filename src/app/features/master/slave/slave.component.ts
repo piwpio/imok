@@ -18,10 +18,11 @@ export class SlaveComponent implements OnInit {
   slaveId: string;
   slaveManageForm: FormGroup | null = null;
   intervals = [
+    {text: '1 minuta', seconds: 60},
     {text: '15 minut', seconds: 15 * 60},
     {text: '30 minut', seconds: 30 * 60},
     {text: '1 godzina', seconds:  60 * 60},
-    {text: '2 godzinu', seconds: 2 * 60 * 60},
+    {text: '2 godziny', seconds: 2 * 60 * 60},
     {text: '1 dzień', seconds: 60 * 60 * 24}
   ];
 
@@ -47,6 +48,7 @@ export class SlaveComponent implements OnInit {
           this.slave = response.data;
           this.slaveManageForm = this.formBuilder.group(
             {
+              slave_id: [this.slaveId, Validators.required],
               is_active: [this.slave.isActive, Validators.required],
               interval: [this.slave.interval, Validators.required]
             }
@@ -70,7 +72,21 @@ export class SlaveComponent implements OnInit {
   }
 
   submitManageSlave(slaveManageForm: SlaveManageForm) {
-
+    this.userService.manageSlave(slaveManageForm).subscribe(response => {
+      if (response.ok) {
+        this.zone.run(() => {
+          this.snackBar.open('Zaktualizowano podopiecznego');
+        });
+      } else {
+        this.zone.run(() => {
+          this.snackBar.open(response.message);
+        });
+      }
+    }, error => {
+      this.zone.run(() => {
+        this.snackBar.open(error.error);
+      });
+    });
   }
 
 }

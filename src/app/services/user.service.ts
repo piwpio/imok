@@ -62,4 +62,9 @@ export class UserService {
     body.token = this.user.token;
     return this.http.post<any>(`${API_BASE_URL}/getslave`, body);
   }
+
+  manageSlave(body): Observable<any> {
+    body.token = this.user.token;
+    return this.http.post<any>(`${API_BASE_URL}/manageslave`, body);
+  }
 }

@@ -45,6 +45,6 @@ export class MasterDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('destroy dashboard');
+    //
   }
 }

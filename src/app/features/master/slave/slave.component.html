@@ -13,7 +13,9 @@
               <mat-option *ngFor="let interval of intervals" [value]="interval.seconds">{{interval.text}}</mat-option>
             </mat-select>
           </mat-form-field>
-
+          <div class="button-manage-slave-container">
+            <button class="button-manage-slave imok-button-min-width" mat-flat-button color="blue" type="submit">Aktualizuj</button>
+          </div>
         </fieldset>
       </form>
     </div>
