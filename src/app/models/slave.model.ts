@@ -3,6 +3,8 @@ export interface SlaveModel {
   name: string;
   isOk: boolean;
   phone: string;
+  isActive: boolean;
+  interval: number;
   lastLocation?: SlaveLocationModel;
 }
 

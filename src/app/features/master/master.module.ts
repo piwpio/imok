@@ -10,6 +10,8 @@ import {MasterComponent} from './master.component';
 import {HeaderMasterComponent} from './header-master/header-master.component';
 import {CreateSlaveComponent} from './new-slave/create-slave.component';
 import {SlaveDashboardListElementComponent} from './slave-dashboard-list-element/slave-dashboard-list-element.component';
+import {SlaveEditComponent} from './slave-edit/slave-edit.component';
+import {SlaveComponent} from './slave/slave.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import {SlaveDashboardListElementComponent} from './slave-dashboard-list-element
     HeaderMasterComponent,
     MasterDashboardComponent,
     SlaveDashboardListElementComponent,
-    CreateSlaveComponent
+    CreateSlaveComponent,
+    SlaveEditComponent,
+    SlaveComponent
   ],
   imports: [
     MasterRoutingModule,

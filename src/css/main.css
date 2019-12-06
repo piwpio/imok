@@ -52,7 +52,7 @@ button.mat-mini-fab.mat-white {
   align-items: center;
   justify-content: center;
 }
-.flex-container > .flex-container-width-100-procent-wrapper {
+.flex-container > .flex-container-width-100-procent-wrapper, .width-100-procent-wrapper {
   width: 100%;
 }
 

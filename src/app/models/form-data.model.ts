@@ -20,3 +20,8 @@ export interface CreateSlaveForm {
 export interface PasswordResetForm {
   email: string;
 }
+
+export interface SlaveManageForm {
+  interval: number;
+  active: boolean;
+}

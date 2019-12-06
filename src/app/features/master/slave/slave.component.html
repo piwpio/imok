@@ -1,5 +1,20 @@
 <div class="imok-view-container">
-  <p>
-    slave works!
-  </p>
+    <div class="width-100-procent-wrapper" style="padding-top: 10px;">
+      <form class="imok-form" *ngIf="slaveManageForm" [formGroup]="slaveManageForm" (ngSubmit)="submitManageSlave(slaveManageForm.value)">
+        <fieldset>
+          <mat-form-field class="input-blue">
+            <mat-select class="input-blue" placeholder="Aktywny" formControlName="is_active">
+              <mat-option [value]="true">Tak</mat-option>
+              <mat-option [value]="false">Nie</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-select class="input-blue" placeholder="Interwał potwierdzania" formControlName="interval">
+              <mat-option *ngFor="let interval of intervals" [value]="interval.seconds">{{interval.text}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </fieldset>
+      </form>
+    </div>
 </div>

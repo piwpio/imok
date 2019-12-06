@@ -13,6 +13,7 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
   public headerTitle: string;
   public sideMenuOpened = false;
   public selectedTab: string;
+  public navigateBackTo: string;
 
   constructor(
     private router: Router,
@@ -24,7 +25,8 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe( (route: NavigationEnd) => {
         // TODO
-        this.setHeader(route.url.replace('/master/', ''));
+        const param = route.url.replace('/master/', '').split('/')[0];
+        this.setHeader(param);
       });
   }
 
@@ -37,9 +39,16 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
       case 'new-slave':
         this.setForNewSlave();
         break;
+      case 'slave-info':
+        this.setForSlaveInfo();
+        break;
       default:
         this.setForDashboard();
     }
+  }
+
+  goBack() {
+    this.router.navigate([this.navigateBackTo]);
   }
 
   openSideMenu() {
@@ -53,11 +62,19 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
   setForDashboard() {
     this.headerTitle = `Dashboard`;
     this.selectedTab = `dashboard`;
+    this.navigateBackTo = null;
   }
 
   setForNewSlave() {
     this.headerTitle = `Dodaj podopiecznego`;
     this.selectedTab = `new-slave`;
+    this.navigateBackTo = null;
+  }
+
+  setForSlaveInfo() {
+    this.headerTitle = `Podopieczny`;
+    this.selectedTab = `slave-info`;
+    this.navigateBackTo = 'master/dashboard';
   }
 
   userLogout() {

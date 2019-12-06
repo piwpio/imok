@@ -15,6 +15,21 @@
   }
 }
 
+#back-arrow-container {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+
+  #back-arrow {
+    position: absolute;
+    top: 18px;
+    left: 24px;
+  }
+}
+
 #side-menu-overlay {
   position: fixed;
   width: 100%;
@@ -82,11 +97,15 @@
         height: 48px;
         text-align: left;
         border-radius: 0;
-        border-top: 1px solid  $imok-line-separator;
+        border-bottom: 1px solid  $imok-line-separator;
         overflow: hidden;
 
+        &#button-dashboard {
+          border-top: 1px solid  $imok-line-separator;
+        }
+
         &#button-slaves, &#button-new-slave {
-          border-bottom: 1px solid  $imok-line-separator;
+
         }
 
         svg {
