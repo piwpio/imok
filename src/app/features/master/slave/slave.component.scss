@@ -1,6 +1,58 @@
+@import '../../../../css/variables';
+
 .button-manage-slave-container {
   margin-top: 10px;
   button {
     width: 100%;
   }
 }
+
+#slave-name-label {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#last-locations-container {
+  margin: 0 2px;
+  padding: 0 12px;
+
+  #last-locations-title-label {
+    text-align: center;
+    margin-bottom: 24px;
+    margin-top: 16px;
+  }
+
+  .last-location-container {
+    border: 1px solid $imok-border-white;
+    border-radius: 4px;
+    position: relative;
+    height: 50px;
+    margin-bottom: 4px;
+
+    .slave-gps-time {
+      line-height: 50px;
+      padding-left: 10px;
+    }
+
+    .slave-gps-container {
+      position: absolute;
+      right: 5px;
+      top: 4px;
+
+      .slave-info-gps {
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+
+      svg {
+        top: 7px;
+        left: 7px;
+        position: absolute;
+      }
+    }
+  }
+}
+
+
+

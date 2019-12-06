@@ -5,10 +5,11 @@ export interface SlaveModel {
   phone: string;
   isActive: boolean;
   interval: number;
-  lastLocation?: SlaveLocationModel;
+  lastLocations: Array<SlaveLocationModel>;
 }
 
 interface SlaveLocationModel {
   lat: number;
   long: number;
+  time: number;
 }

@@ -19,7 +19,8 @@ export class SlaveDashboardListElementComponent implements OnInit {
 
   ngOnInit(
   ) {
-    this.isLastLocation = this.slave.lastLocation !== undefined && this.slave.lastLocation !== null;
+    console.log(this.slave);
+    this.isLastLocation = this.slave.lastLocations.length;
   }
 
   goToSlaveEdit() {

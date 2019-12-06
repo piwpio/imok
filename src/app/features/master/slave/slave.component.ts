@@ -46,6 +46,11 @@ export class SlaveComponent implements OnInit {
       this.userService.getSlave(body).subscribe(response => {
         if (response.ok) {
           this.slave = response.data;
+          this.slave.lastLocations = [{
+            lat: 50.0582514,
+            long: 19.947557,
+            time: 1575664894885
+          }];
           this.slaveManageForm = this.formBuilder.group(
             {
               slave_id: [this.slaveId, Validators.required],

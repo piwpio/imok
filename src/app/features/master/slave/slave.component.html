@@ -1,22 +1,40 @@
 <div class="imok-view-container">
-    <div class="width-100-procent-wrapper" style="padding-top: 10px;">
-      <form class="imok-form" *ngIf="slaveManageForm" [formGroup]="slaveManageForm" (ngSubmit)="submitManageSlave(slaveManageForm.value)">
-        <fieldset>
-          <mat-form-field class="input-blue">
-            <mat-select class="input-blue" placeholder="Aktywny" formControlName="is_active">
-              <mat-option [value]="true">Tak</mat-option>
-              <mat-option [value]="false">Nie</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="input-blue">
-            <mat-select class="input-blue" placeholder="Interwał potwierdzania" formControlName="interval">
-              <mat-option *ngFor="let interval of intervals" [value]="interval.seconds">{{interval.text}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <div class="button-manage-slave-container">
-            <button class="button-manage-slave imok-button-min-width" mat-flat-button color="blue" type="submit">Aktualizuj</button>
+    <div *ngIf="slave">
+      <div id="slave-name-label">{{slave.name}}</div>
+      <div class="width-100-procent-wrapper" style="padding-top: 10px;">
+        <form class="imok-form" *ngIf="slaveManageForm" [formGroup]="slaveManageForm" (ngSubmit)="submitManageSlave(slaveManageForm.value)">
+          <fieldset>
+            <mat-form-field class="input-blue">
+              <mat-select class="input-blue" placeholder="Aktywny" formControlName="is_active">
+                <mat-option [value]="true">Tak</mat-option>
+                <mat-option [value]="false">Nie</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-blue">
+              <mat-select class="input-blue" placeholder="Interwał potwierdzania" formControlName="interval">
+                <mat-option *ngFor="let interval of intervals" [value]="interval.seconds">{{interval.text}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="button-manage-slave-container">
+              <button class="button-manage-slave imok-button-min-width" mat-flat-button color="blue" type="submit">Aktualizuj</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <div *ngIf="slave?.lastLocations.length" id="last-locations-container">
+          <div id="last-locations-title-label"><span>Historia lokalizacji:</span></div>
+          <div *ngFor="let lastLocation of slave.lastLocations" class="last-location-container">
+            <span class="slave-gps-time">{{ lastLocation.time | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+            <div class="slave-gps-container">
+              <div class="slave-dashboard-gps" >
+                <button mat-mini-fab color="white">
+                  <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+                </button>
+              </div>
+            </div>
           </div>
-        </fieldset>
-      </form>
+
+        </div>
+      </div>
     </div>
 </div>
