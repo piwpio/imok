@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import {LoginForm} from '../../../models/form-data.model';
 import {UserService} from '../../../services/user.service';
+import {Observable} from 'rxjs';
+import {DEFAULT_USER, UserModel} from '../../../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -31,16 +33,29 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(loginFormValues: LoginForm) {
-    this.userService.logIn(loginFormValues.email, loginFormValues.password)
-      .subscribe(user => {
-        if (user.isLogged) {
+    this.userService.logIn(loginFormValues)
+      .subscribe(response => {
+        if (response.ok) {
+          const data = response.data;
+          const user: UserModel = {
+            id: data.id,
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            token: data.token,
+            isLogged: true,
+          };
           this.userService.setUser(user);
           this.router.navigate(['master/dashboard']);
         } else {
           this.zone.run(() => {
-            this.snackBar.open('Niepoprawny login lub hasło');
+            this.snackBar.open(response.message);
           });
         }
+      }, error => {
+        this.zone.run(() => {
+          this.snackBar.open(error.error);
+        });
       });
   }
 

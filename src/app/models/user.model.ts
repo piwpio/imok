@@ -1,13 +1,17 @@
 export interface UserModel {
-  id: number;
+  id: string;
   name: string;
+  email: string;
+  phone: number;
   token: string;
   isLogged: boolean;
 }
 
 export const DEFAULT_USER: UserModel = {
-  id: 0,
+  id: '',
   name: 'Not Logged',
+  email: '',
+  phone: 0,
   token: '',
   isLogged: false
 };

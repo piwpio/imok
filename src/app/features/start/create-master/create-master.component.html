@@ -4,6 +4,10 @@
       <form class="imok-form" [formGroup]="createMasterForm" (ngSubmit)="submitCreateMaster(createMasterForm.value)">
         <fieldset>
           <mat-form-field class="input-blue">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
             <mat-label>E-mail</mat-label>
             <input matInput formControlName="email">
           </mat-form-field>

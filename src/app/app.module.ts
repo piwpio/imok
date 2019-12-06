@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {UserService} from './services/user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 export function userFactory(provider: UserService) {
   return () => provider.initUser();
@@ -23,7 +24,8 @@ export function userFactory(provider: UserService) {
     // IonicModule.forRoot({animated: false}),
     IonicModule.forRoot(),
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

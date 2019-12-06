@@ -2,6 +2,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {CreateMasterForm} from '../../../models/form-data.model';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-create-master',
@@ -14,12 +15,14 @@ export class CreateMasterComponent implements OnInit {
   constructor(
     private zone: NgZone,
     private snackBar: MatSnackBar,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     this.createMasterForm = this.formBuilder.group(
       {
+        name: ['', Validators.required],
         email: ['', Validators.required],
         phone: ['', Validators.required],
         password: ['', Validators.required],
@@ -29,9 +32,19 @@ export class CreateMasterComponent implements OnInit {
   }
 
   submitCreateMaster(createMasterForm: CreateMasterForm) {
-    console.log(createMasterForm);
-    this.zone.run(() => {
-      this.snackBar.open('Utwórz konto');
+    this.userService.createMaster(createMasterForm).subscribe(response => {
+      if (response.ok) {
+        //
+      } else {
+        this.zone.run(() => {
+          this.snackBar.open(response.message);
+        });
+      }
+    }, error => {
+      this.zone.run(() => {
+        this.snackBar.open(error.error);
+      });
     });
+
   }
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {DEFAULT_USER, UserModel} from '../models/user.model';
+import {API_BASE_URL} from '../constants/environment';
 import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,9 @@ import {Observable} from 'rxjs';
 export class UserService {
   private user: UserModel;
 
-  constructor() {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
   initUser() {
     console.log('initUser');
@@ -32,25 +36,16 @@ export class UserService {
     this.user = user;
   }
 
-  logIn(email: string, password: string): Observable<UserModel> {
-    return new Observable<UserModel>((observer) => {
-      if (email === 'pp@p.com' && password === 'asd') {
-        const loggedTestUser: UserModel = {
-          id: 1,
-          name: 'Piotr Piwowar',
-          token: 'token',
-          isLogged: true
-        };
-        observer.next(loggedTestUser);
-      } else {
-        observer.next(DEFAULT_USER);
-      }
-      observer.complete();
-    });
+  logIn(body): Observable<any> {
+    return this.http.post<any>(`${API_BASE_URL}/login`, body);
   }
 
   logOut() {
     localStorage.removeItem('user');
     this.user = DEFAULT_USER;
+  }
+
+  createMaster(body): Observable<any> {
+    return this.http.post<any>(`${API_BASE_URL}/createmaster`, body);
   }
 }
