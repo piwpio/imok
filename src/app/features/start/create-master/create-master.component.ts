@@ -33,6 +33,16 @@ export class CreateMasterComponent implements OnInit {
     );
   }
 
+  ionViewWillEnter() {
+    if (this.createMasterForm) {
+      this.createMasterForm.get('name').setValue('');
+      this.createMasterForm.get('email').setValue('');
+      this.createMasterForm.get('phone').setValue('');
+      this.createMasterForm.get('password').setValue('');
+      this.createMasterForm.get('repassword').setValue('');
+    }
+  }
+
   submitCreateMaster(createMasterForm: CreateMasterForm) {
     this.userService.createMaster(createMasterForm).subscribe(response => {
       if (!response.ok) { this.showSnackbar(response.message); return; }

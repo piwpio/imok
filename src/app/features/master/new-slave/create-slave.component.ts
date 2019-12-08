@@ -32,12 +32,22 @@ export class CreateSlaveComponent implements OnInit {
     );
   }
 
+  ionViewWillEnter() {
+    if (this.createSlaveForm) {
+      this.createSlaveForm.get('email').setValue('');
+      this.createSlaveForm.get('password').setValue('');
+      this.createSlaveForm.get('repassword').setValue('');
+      this.createSlaveForm.get('phone').setValue('');
+    }
+  }
+
   submitCreateSlave(createSlaveForm: CreateSlaveForm) {
     this.userService.createSlave(createSlaveForm).subscribe(response => {
       if (!response.ok) { this.showSnackbar(response.message); return; }
       this.showSnackbar('Utwórzono podopiecznego');
       this.router.navigate(['master/dashboard']);
     }, error => {
+      if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
       typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }

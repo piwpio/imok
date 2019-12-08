@@ -47,10 +47,11 @@ export class SlaveComponent implements OnInit {
       this.userService.getSlave(body).subscribe(response => {
         if (!response.ok) { this.showSnackbar(response.message); return; }
         this.slave = response.data;
-        this.slave.lastLocations = [{
+        this.slave.actions = [{
           lat: 50.0582514,
           long: 19.947557,
-          time: 1575664894885
+          time: 1575664894885,
+          isOk: true
         }];
         this.slaveManageForm = this.formBuilder.group(
           {
@@ -60,6 +61,7 @@ export class SlaveComponent implements OnInit {
           }
         );
       }, error => {
+        if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
         typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
       });
     });
@@ -75,6 +77,7 @@ export class SlaveComponent implements OnInit {
       if (!response.ok) { this.showSnackbar(response.message); return; }
       this.showSnackbar('Zaktualizowano podopiecznego');
     }, error => {
+      if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
       typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }

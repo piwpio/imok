@@ -49,11 +49,13 @@ export class LoginComponent implements OnInit {
           email: data.email,
           phone: data.phone,
           token: data.token,
-          isLogged: true,
+          isMaster: data.isMaster,
+          isLogged: true
         };
         this.userService.setUser(user);
         this.router.navigate(['master/dashboard']);
       }, error => {
+        if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
         typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
       });
   }

@@ -10,7 +10,6 @@ const routes: Routes = [
   {
     path: '', component: StartComponent,
     children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent},
       { path: 'createmaster', component: CreateMasterComponent },
       { path: 'passwordreset', component: PasswordResetComponent }

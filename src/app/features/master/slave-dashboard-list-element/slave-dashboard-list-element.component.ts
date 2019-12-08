@@ -18,12 +18,13 @@ export class SlaveDashboardListElementComponent implements OnInit {
 
   ngOnInit(
   ) {
-    this.slave.lastLocations = [{
+    this.slave.actions = [{
       lat: 50.0582514,
       long: 19.947557,
-      time: 1575664894885
+      time: 1575664894885,
+      isOk: true
     }];
-    this.lastLocation = this.slave.lastLocations.length ? this.slave.lastLocations[0] : null;
+    this.lastLocation = this.slave.actions.length ? this.slave.actions[0] : null;
   }
 
   goToSlaveManage() {

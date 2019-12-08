@@ -21,9 +21,9 @@
           </fieldset>
         </form>
 
-        <div *ngIf="slave?.lastLocations.length" id="last-locations-container">
+        <div *ngIf="slave?.actions.length" id="last-locations-container">
           <div id="last-locations-title-label"><span>Historia lokalizacji:</span></div>
-          <div *ngFor="let lastLocation of slave.lastLocations" class="last-location-container">
+          <div *ngFor="let lastLocation of slave.actions" class="last-location-container">
             <span class="slave-gps-time">{{ lastLocation.time | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
             <div class="slave-gps-container">
               <div class="slave-dashboard-gps" >

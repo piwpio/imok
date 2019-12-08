@@ -29,6 +29,7 @@ export class SlavesComponent implements OnInit {
       if (!response.ok) { this.showSnackbar(response.message); return; }
       this.slaves = response.data;
     }, error => {
+      if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
       typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }
@@ -41,8 +42,18 @@ export class SlavesComponent implements OnInit {
     this.router.navigate(['master/slave-edit', slaveId]);
   }
 
-  removeSlave(slaveId: string) {
-
+  deleteSlave(slaveId: string) {
+    this.userService.deleteSlave({slave_id: slaveId}).subscribe(response => {
+      if (!response.ok) { this.showSnackbar(response.message); return; }
+      const tmp = [...this.slaves];
+      this.slaves = tmp.filter(slave => {
+        return slave.id !== slaveId;
+      });
+      this.showSnackbar('Usunięto podopiecznego');
+    }, error => {
+      if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
+      typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
+    });
   }
 
   showSnackbar(message: string) {

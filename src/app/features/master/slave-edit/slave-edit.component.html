@@ -22,7 +22,7 @@
           <div class="edit-slave-button-container">
             <button class="imok-button-min-width" mat-flat-button color="blue" type="submit" [disabled]="slaveEditForm.invalid">Aktualizuj podopiecznego</button>
           </div>
-          <div class="logout-slave-button-container">
+          <div *ngIf="slave.isLogged" class="logout-slave-button-container">
             <button class="imok-button-min-width" mat-stroked-button color="white" type="submit" (click)="submitLogoutSlave($event)">Wyloguj podopiecznego</button>
           </div>
         </fieldset>

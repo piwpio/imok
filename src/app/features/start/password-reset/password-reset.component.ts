@@ -25,6 +25,12 @@ export class PasswordResetComponent implements OnInit {
     );
   }
 
+  ionViewWillEnter() {
+    if (this.passwordResetForm) {
+      this.passwordResetForm.get('email').setValue('');
+    }
+  }
+
   submitLogin(passwordResetForm: PasswordResetForm) {
     this.showSnackbar('Jeżeli email istnieje w bazie, wysłaliśmy tam link resetujący hasło. Sprawdź skrzynkę pocztową.')
   }

@@ -5,11 +5,13 @@ export interface SlaveModel {
   phone: string;
   isActive: boolean;
   interval: number;
-  lastLocations: Array<SlaveLocationModel>;
+  actions: Array<SlaveActionModel>;
+  isLogged: boolean;
 }
 
-interface SlaveLocationModel {
+interface SlaveActionModel {
   lat: number;
   long: number;
   time: number;
+  isOk: boolean;
 }

@@ -5,6 +5,7 @@ export interface UserModel {
   phone: number;
   token: string;
   isLogged: boolean;
+  isMaster: boolean;
 }
 
 export const DEFAULT_USER: UserModel = {
@@ -13,5 +14,6 @@ export const DEFAULT_USER: UserModel = {
   email: '',
   phone: 0,
   token: '',
-  isLogged: false
+  isLogged: false,
+  isMaster: false
 };

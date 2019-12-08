@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {DEFAULT_USER, UserModel} from '../models/user.model';
 import {API_BASE_URL} from '../constants/environment';
 import {Observable} from 'rxjs';
@@ -45,6 +45,10 @@ export class UserService {
     return this.http.post<any>(`${API_BASE_URL}/login`, body);
   }
 
+  checkStillLogged(): Observable<any> {
+    return this.http.post<any>(`${API_BASE_URL}/checkstilllogged`, {token: this.user.token});
+  }
+
   createMaster(body): Observable<any> {
     return this.http.post<any>(`${API_BASE_URL}/createmaster`, body);
   }
@@ -75,5 +79,10 @@ export class UserService {
   manageSlave(body): Observable<any> {
     body.token = this.user.token;
     return this.http.post<any>(`${API_BASE_URL}/manageslave`, body);
+  }
+
+  deleteSlave(body): Observable<any> {
+    body.token = this.user.token;
+    return this.http.post<any>(`${API_BASE_URL}/deleteslave`, body);
   }
 }
