@@ -37,7 +37,7 @@ import {SlavesComponent} from './slaves/slaves.component';
     MatSnackBarModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBE2RLbpSTs7_LhsFqCgTc2jjV14Xlv6Ys'
+      apiKey: ''
     })
   ],
   providers: [
