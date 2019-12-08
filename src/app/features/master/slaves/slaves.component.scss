@@ -1,0 +1,38 @@
+@import '../../../../css/variables';
+.no-slaves {
+  button {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+  }
+}
+
+.slaves-list {
+
+  .slave-container {
+    border: 1px solid $imok-border-white;
+    border-radius: 4px;
+    position: relative;
+    height: 50px;
+    margin-bottom: 4px;
+
+    .slave-name {
+      line-height: 50px;
+      padding-left: 10px;
+    }
+
+    .slave-edit-container {
+      position: absolute;
+      right: 5px;
+      top: 4px;
+
+      .slave-edit-button {
+        svg {
+          top: 7px;
+          left: 7px;
+          position: absolute;
+        }
+      }
+    }
+  }
+}

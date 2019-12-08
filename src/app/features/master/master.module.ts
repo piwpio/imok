@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {IonicModule} from '@ionic/angular';
 import {MaterialModule} from '../../material.module';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material';
@@ -14,6 +14,7 @@ import {SlaveEditComponent} from './slave-edit/slave-edit.component';
 import {SlaveComponent} from './slave/slave.component';
 import {AgmCoreModule, GoogleMapsAPIWrapper, MapsAPILoader} from '@agm/core';
 import {SlaveMapComponent} from './slave-map/slave-map.component';
+import {SlavesComponent} from './slaves/slaves.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {SlaveMapComponent} from './slave-map/slave-map.component';
     CreateSlaveComponent,
     SlaveEditComponent,
     SlaveComponent,
-    SlaveMapComponent
+    SlaveMapComponent,
+    SlavesComponent
   ],
   imports: [
     MasterRoutingModule,

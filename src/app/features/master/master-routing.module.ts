@@ -7,6 +7,7 @@ import {CreateSlaveComponent} from './new-slave/create-slave.component';
 import {SlaveEditComponent} from './slave-edit/slave-edit.component';
 import {SlaveComponent} from './slave/slave.component';
 import {SlaveMapComponent} from './slave-map/slave-map.component';
+import {SlavesComponent} from './slaves/slaves.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: MasterDashboardComponent},
+      { path: 'slaves', component: SlavesComponent},
       { path: 'new-slave', component: CreateSlaveComponent},
       { path: 'slave-edit', component: SlaveEditComponent},
       { path: 'slave-info/:id', component: SlaveComponent},

@@ -4,8 +4,7 @@ import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import {LoginForm} from '../../../models/form-data.model';
 import {UserService} from '../../../services/user.service';
-import {Observable} from 'rxjs';
-import {DEFAULT_USER, UserModel} from '../../../models/user.model';
+import {UserModel} from '../../../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -26,10 +25,17 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['pp@p.com', Validators.required],
-        password: ['asd', Validators.required]
+        email: ['', Validators.required],
+        password: ['', Validators.required]
       }
     );
+  }
+
+  ionViewWillEnter() {
+    if (this.loginForm) {
+      this.loginForm.get('email').setValue('');
+      this.loginForm.get('password').setValue('');
+    }
   }
 
   submitLogin(loginFormValues: LoginForm) {

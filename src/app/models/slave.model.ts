@@ -1,5 +1,5 @@
 export interface SlaveModel {
-  readonly id: number;
+  readonly id: string;
   name: string;
   isOk: boolean;
   phone: string;

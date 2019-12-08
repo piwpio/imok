@@ -44,7 +44,5 @@ export class MasterDashboardComponent implements OnInit, OnDestroy {
     this.router.navigate(['master/new-slave']);
   }
 
-  ngOnDestroy(): void {
-    //
-  }
+  ngOnDestroy(): void { }
 }

@@ -25,7 +25,6 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
     this.router$ = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe( (route: NavigationEnd) => {
-        // TODO
         const split = route.url.replace('/master/', '').split('/');
         const url = split[0];
         const param = split[1] !== undefined ? split[1] : null;
@@ -48,6 +47,9 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
       case 'slave-map':
         this.setForSlaveMap();
         break;
+      case 'slaves':
+        this.setForSlaves();
+        break;
       default:
         this.setForDashboard();
     }
@@ -64,6 +66,13 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
   setForDashboard() {
     this.headerTitle = `Dashboard`;
     this.selectedTab = `dashboard`;
+    this.navigateBackTo = null;
+    this.param = null;
+  }
+
+  setForSlaves() {
+    this.headerTitle = `Podopieczni`;
+    this.selectedTab = `slaves`;
     this.navigateBackTo = null;
     this.param = null;
   }
@@ -100,14 +109,12 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
 
   goTo(route: string) {
     if (route !== this.selectedTab) {
-      console.log(route, `master/${route}`);
       this.router.navigate([`master/${route}`]);
     }
     this.closeSideMenu();
   }
 
   goBack() {
-    console.log(this.navigateBackTo, this.param);
     if (this.param && this.selectedTab === 'slave-map') {
       this.router.navigate([this.navigateBackTo, this.param]);
     } else {
