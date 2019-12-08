@@ -63,6 +63,10 @@ export class UserService {
     return this.http.post<any>(`${API_BASE_URL}/editslave`, body);
   }
 
+  logoutSlave(): Observable<any> {
+    return this.http.post<any>(`${API_BASE_URL}/logoutslave`, {token: this.user.token});
+  }
+
   getSlave(body): Observable<any> {
     body.token = this.user.token;
     return this.http.post<any>(`${API_BASE_URL}/getslave`, body);

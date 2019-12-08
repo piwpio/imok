@@ -41,28 +41,20 @@ export class LoginComponent implements OnInit {
   submitLogin(loginFormValues: LoginForm) {
     this.userService.logIn(loginFormValues)
       .subscribe(response => {
-        if (response.ok) {
-          const data = response.data;
-          const user: UserModel = {
-            id: data.id,
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            token: data.token,
-            isLogged: true,
-          };
-          this.userService.setUser(user);
-          this.router.navigate(['master/dashboard']);
-        } else {
-          this.zone.run(() => {
-            this.snackBar.open(response.message);
-          });
-        }
+        if (!response.ok) { this.showSnackbar(response.message); return; }
+        const data = response.data;
+        const user: UserModel = {
+          id: data.id,
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          token: data.token,
+          isLogged: true,
+        };
+        this.userService.setUser(user);
+        this.router.navigate(['master/dashboard']);
       }, error => {
-        this.zone.run(() => {
-          this.snackBar.open(error.error);
-          console.log(error);
-        });
+        typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
       });
   }
 
@@ -74,6 +66,12 @@ export class LoginComponent implements OnInit {
   goToPasswordReset(event: Event) {
     event.preventDefault();
     this.router.navigate(['start/passwordreset']);
+  }
+
+  showSnackbar(message: string) {
+    this.zone.run(() => {
+      this.snackBar.open(message);
+    });
   }
 
 }

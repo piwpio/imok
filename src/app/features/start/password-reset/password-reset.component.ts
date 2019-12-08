@@ -26,9 +26,12 @@ export class PasswordResetComponent implements OnInit {
   }
 
   submitLogin(passwordResetForm: PasswordResetForm) {
-    console.log(passwordResetForm);
+    this.showSnackbar('Jeżeli email istnieje w bazie, wysłaliśmy tam link resetujący hasło. Sprawdź skrzynkę pocztową.')
+  }
+
+  showSnackbar(message: string) {
     this.zone.run(() => {
-      this.snackBar.open('Jeżeli email istnieje w bazie, wysłaliśmy tam link resetujący hasło. Sprawdź skrzynkę pocztową.');
+      this.snackBar.open(message);
     });
   }
 }

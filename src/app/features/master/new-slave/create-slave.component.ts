@@ -34,20 +34,17 @@ export class CreateSlaveComponent implements OnInit {
 
   submitCreateSlave(createSlaveForm: CreateSlaveForm) {
     this.userService.createSlave(createSlaveForm).subscribe(response => {
-      if (response.ok) {
-        this.zone.run(() => {
-          this.snackBar.open('Utwórzono podopiecznego');
-        });
-        this.router.navigate(['master/dashboard']);
-      } else {
-        this.zone.run(() => {
-          this.snackBar.open(response.message);
-        });
-      }
+      if (!response.ok) { this.showSnackbar(response.message); return; }
+      this.showSnackbar('Utwórzono podopiecznego');
+      this.router.navigate(['master/dashboard']);
     }, error => {
-      this.zone.run(() => {
-        this.snackBar.open(error.error);
-      });
+      typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
+    });
+  }
+
+  showSnackbar(message: string) {
+    this.zone.run(() => {
+      this.snackBar.open(message);
     });
   }
 

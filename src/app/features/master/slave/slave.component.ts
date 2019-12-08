@@ -45,29 +45,22 @@ export class SlaveComponent implements OnInit {
       this.slaveId = params.id;
       const body = {slave_id: this.slaveId};
       this.userService.getSlave(body).subscribe(response => {
-        if (response.ok) {
-          this.slave = response.data;
-          this.slave.lastLocations = [{
-            lat: 50.0582514,
-            long: 19.947557,
-            time: 1575664894885
-          }];
-          this.slaveManageForm = this.formBuilder.group(
-            {
-              slave_id: [this.slaveId, Validators.required],
-              is_active: [this.slave.isActive, Validators.required],
-              interval: [this.slave.interval, Validators.required]
-            }
-          );
-        } else {
-          this.zone.run(() => {
-            this.snackBar.open(response.message);
-          });
-        }
+        if (!response.ok) { this.showSnackbar(response.message); return; }
+        this.slave = response.data;
+        this.slave.lastLocations = [{
+          lat: 50.0582514,
+          long: 19.947557,
+          time: 1575664894885
+        }];
+        this.slaveManageForm = this.formBuilder.group(
+          {
+            slave_id: [this.slaveId, Validators.required],
+            is_active: [this.slave.isActive, Validators.required],
+            interval: [this.slave.interval, Validators.required]
+          }
+        );
       }, error => {
-        this.zone.run(() => {
-          this.snackBar.open(error.error);
-        });
+        typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
       });
     });
   }
@@ -79,19 +72,10 @@ export class SlaveComponent implements OnInit {
 
   submitManageSlave(slaveManageForm: SlaveManageForm) {
     this.userService.manageSlave(slaveManageForm).subscribe(response => {
-      if (response.ok) {
-        this.zone.run(() => {
-          this.snackBar.open('Zaktualizowano podopiecznego');
-        });
-      } else {
-        this.zone.run(() => {
-          this.snackBar.open(response.message);
-        });
-      }
+      if (!response.ok) { this.showSnackbar(response.message); return; }
+      this.showSnackbar('Zaktualizowano podopiecznego');
     }, error => {
-      this.zone.run(() => {
-        this.snackBar.open(error.error);
-      });
+      typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }
 
@@ -99,4 +83,9 @@ export class SlaveComponent implements OnInit {
     this.router.navigate(['master/slave-map', lat, long]);
   }
 
+  showSnackbar(message: string) {
+    this.zone.run(() => {
+      this.snackBar.open(message);
+    });
+  }
 }

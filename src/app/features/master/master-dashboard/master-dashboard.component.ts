@@ -26,22 +26,21 @@ export class MasterDashboardComponent implements OnInit, OnDestroy {
   ionViewWillEnter() {
     this.slaves = null;
     this.userService.getSlaves().subscribe(response => {
-      if (response.ok) {
-        this.slaves = response.data;
-      } else {
-        this.zone.run(() => {
-          this.snackBar.open(response.message);
-        });
-      }
+      if (!response.ok) { this.showSnackbar(response.message); return; }
+      this.slaves = response.data;
     }, error => {
-      this.zone.run(() => {
-        this.snackBar.open(error.error);
-      });
+      typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }
 
   goToCreateNewSlaveView() {
     this.router.navigate(['master/new-slave']);
+  }
+
+  showSnackbar(message: string) {
+    this.zone.run(() => {
+      this.snackBar.open(message);
+    });
   }
 
   ngOnDestroy(): void { }

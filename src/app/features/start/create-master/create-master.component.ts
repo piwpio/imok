@@ -35,21 +35,17 @@ export class CreateMasterComponent implements OnInit {
 
   submitCreateMaster(createMasterForm: CreateMasterForm) {
     this.userService.createMaster(createMasterForm).subscribe(response => {
-      if (response.ok) {
-        this.zone.run(() => {
-          this.snackBar.open('Utworzono nowe konto. Teraz możesz się zalogować.');
-        });
-        this.router.navigate(['start/login']);
-      } else {
-        this.zone.run(() => {
-          this.snackBar.open(response.message);
-        });
-      }
+      if (!response.ok) { this.showSnackbar(response.message); return; }
+      this.showSnackbar('Utworzono nowe konto. Teraz możesz się zalogować.');
+      this.router.navigate(['start/login']);
     }, error => {
-      this.zone.run(() => {
-        this.snackBar.open(error.error);
-      });
+      this.showSnackbar(error.message);
     });
+  }
 
+  showSnackbar(message: string) {
+    this.zone.run(() => {
+      this.snackBar.open(message);
+    });
   }
 }

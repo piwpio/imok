@@ -37,26 +37,19 @@ export class SlaveEditComponent implements OnInit {
       this.slaveId = params.id;
       const body = {slave_id: this.slaveId};
       this.userService.getSlave(body).subscribe(response => {
-        if (response.ok) {
-          this.slave = response.data;
-          this.slaveEditForm = this.formBuilder.group(
-            {
-              slave_id: [this.slave.id, Validators.required],
-              name: [this.slave.name, Validators.required],
-              phone: [this.slave.phone, Validators.required],
-              password: [''],
-              repassword: [''],
-            }
-          );
-        } else {
-          this.zone.run(() => {
-            this.snackBar.open(response.message);
-          });
-        }
+        if (!response.ok) { this.showSnackbar(response.message); return; }
+        this.slave = response.data;
+        this.slaveEditForm = this.formBuilder.group(
+          {
+            slave_id: [this.slave.id, Validators.required],
+            name: [this.slave.name, Validators.required],
+            phone: [this.slave.phone, Validators.required],
+            password: [''],
+            repassword: [''],
+          }
+        );
       }, error => {
-        this.zone.run(() => {
-          this.snackBar.open(error.error);
-        });
+        typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
       });
     });
   }
@@ -68,26 +61,26 @@ export class SlaveEditComponent implements OnInit {
 
   submitEditSlave(slaveEditForm: EditSlaveForm) {
     this.userService.editSlave(slaveEditForm).subscribe(response => {
-      if (response.ok) {
-        this.zone.run(() => {
-          this.snackBar.open('Zaktualizowano podopiecznego');
-        });
-        this.router.navigate(['master/slaves']);
-      } else {
-        this.zone.run(() => {
-          this.snackBar.open(response.message);
-        });
-      }
+      if (!response.ok) { this.showSnackbar(response.message); return; }
+      this.showSnackbar('Zaktualizowano podopiecznego');
+      this.router.navigate(['master/slaves']);
     }, error => {
-      this.zone.run(() => {
-        this.snackBar.open(error.error);
-      });
+      typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }
 
   submitLogoutSlave(event: MouseEvent) {
-    event.preventDefault();
-    console.log('logut slave');
+    this.userService.logoutSlave().subscribe(response => {
+      if (!response.ok) { this.showSnackbar(response.message); return; }
+      this.showSnackbar('Podopieczny został wylogowany na swoim urządzeniu');
+    }, error => {
+      typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
+    });
   }
 
+  showSnackbar(message: string) {
+    this.zone.run(() => {
+      this.snackBar.open(message);
+    });
+  }
 }
