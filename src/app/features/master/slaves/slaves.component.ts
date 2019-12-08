@@ -48,4 +48,8 @@ export class SlavesComponent implements OnInit {
     this.router.navigate(['master/slave-edit', slaveId]);
   }
 
+  removeSlave(slaveId: string) {
+
+  }
+
 }

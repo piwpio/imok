@@ -21,16 +21,26 @@
       padding-left: 10px;
     }
 
-    .slave-edit-container {
+    .slave-edit-buttons-container {
       position: absolute;
       right: 5px;
       top: 4px;
 
       .slave-edit-button {
+        float:right;
+        margin-right: 4px;
         svg {
           top: 7px;
           left: 7px;
           position: absolute;
+        }
+      }
+      .slave-delete-button {
+        float:right;
+        svg {
+          position: absolute;
+          top: 8px;
+          left: 8px;
         }
       }
     }

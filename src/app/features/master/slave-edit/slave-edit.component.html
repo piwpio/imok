@@ -1,6 +1,35 @@
 <div class="imok-view-container">
-  <p>
-    slave-edit works!
-  </p>
-</div>
+  <div class="flex-container">
+    <div class="flex-container-width-100-procent-wrapper">
+      <form class="imok-form" *ngIf="slave && slaveEditForm" [formGroup]="slaveEditForm" (ngSubmit)="submitEditSlave(slaveEditForm.value)">
+        <fieldset>
+          <mat-form-field class="input-blue">
+            <mat-label>Nazwa</mat-label>
+            <input matInput formControlName="name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-label>Numer telefonu</mat-label>
+            <input matInput type="number" formControlName="phone" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-label>Nowy PIN</mat-label>
+            <input matInput type="number" formControlName="password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <mat-form-field class="input-blue">
+            <mat-label>Powtórz PIN</mat-label>
+            <input matInput type="number" formControlName="repassword" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          </mat-form-field>
+          <div class="edit-slave-button-container">
+            <button class="imok-button-min-width" mat-flat-button color="blue" type="submit" [disabled]="slaveEditForm.invalid">Aktualizuj podopiecznego</button>
+          </div>
+          <div class="logout-slave-button-container">
+            <button class="imok-button-min-width" mat-stroked-button color="white" type="submit" (click)="submitLogoutSlave($event)">Wyloguj podopiecznego</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div>
 
+    </div>
+  </div>
+</div>

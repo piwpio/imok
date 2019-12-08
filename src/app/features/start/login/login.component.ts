@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
       }, error => {
         this.zone.run(() => {
           this.snackBar.open(error.error);
+          console.log(error);
         });
       });
   }

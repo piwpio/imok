@@ -15,15 +15,27 @@
   line-height: 50px;
   padding-left: 10px;
 }
-.slaves-list .slave-container .slave-edit-container {
+.slaves-list .slave-container .slave-edit-buttons-container {
   position: absolute;
   right: 5px;
   top: 4px;
 }
-.slaves-list .slave-container .slave-edit-container .slave-edit-button svg {
+.slaves-list .slave-container .slave-edit-buttons-container .slave-edit-button {
+  float: right;
+  margin-right: 4px;
+}
+.slaves-list .slave-container .slave-edit-buttons-container .slave-edit-button svg {
   top: 7px;
   left: 7px;
   position: absolute;
+}
+.slaves-list .slave-container .slave-edit-buttons-container .slave-delete-button {
+  float: right;
+}
+.slaves-list .slave-container .slave-edit-buttons-container .slave-delete-button svg {
+  position: absolute;
+  top: 8px;
+  left: 8px;
 }
 
 /*# sourceMappingURL=slaves.component.css.map */

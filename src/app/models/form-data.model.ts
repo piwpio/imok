@@ -3,6 +3,10 @@ export interface LoginForm {
   password: string;
 }
 
+export interface PasswordResetForm {
+  email: string;
+}
+
 export interface CreateMasterForm {
   email: string;
   phone: string;
@@ -12,13 +16,16 @@ export interface CreateMasterForm {
 
 export interface CreateSlaveForm {
   name: string;
-  pin: string;
-  repin: string;
+  password: string;
+  repassword: string;
   phone: string;
 }
 
-export interface PasswordResetForm {
-  email: string;
+export interface EditSlaveForm {
+  name: string;
+  phone: string;
+  password: string;
+  repassword: string;
 }
 
 export interface SlaveManageForm {

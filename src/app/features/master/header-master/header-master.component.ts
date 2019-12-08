@@ -50,6 +50,9 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
       case 'slaves':
         this.setForSlaves();
         break;
+      case 'slave-edit':
+        this.setForSlaveEdit();
+        break;
       default:
         this.setForDashboard();
     }
@@ -89,6 +92,13 @@ export class HeaderMasterComponent implements OnInit, OnDestroy {
     this.selectedTab = `slave-info`;
     this.navigateBackTo = 'master/dashboard';
     this.param = param;
+  }
+
+  setForSlaveEdit() {
+    this.headerTitle = `Edytuj podopiecznego`;
+    this.selectedTab = `slave-edit`;
+    this.navigateBackTo = 'master/slaves';
+    this.param = null;
   }
 
   setForSlaveMap() {

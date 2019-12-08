@@ -58,6 +58,11 @@ export class UserService {
     return this.http.post<any>(`${API_BASE_URL}/createslave`, body);
   }
 
+  editSlave(body): Observable<any> {
+    body.token = this.user.token;
+    return this.http.post<any>(`${API_BASE_URL}/editslave`, body);
+  }
+
   getSlave(body): Observable<any> {
     body.token = this.user.token;
     return this.http.post<any>(`${API_BASE_URL}/getslave`, body);

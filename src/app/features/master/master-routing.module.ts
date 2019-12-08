@@ -18,7 +18,7 @@ const routes: Routes = [
       { path: 'dashboard', component: MasterDashboardComponent},
       { path: 'slaves', component: SlavesComponent},
       { path: 'new-slave', component: CreateSlaveComponent},
-      { path: 'slave-edit', component: SlaveEditComponent},
+      { path: 'slave-edit/:id', component: SlaveEditComponent},
       { path: 'slave-info/:id', component: SlaveComponent},
       { path: 'slave-map/:lat/:long', component: SlaveMapComponent}
     ]
