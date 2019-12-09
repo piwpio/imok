@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 import {UserModel} from '../../models/user.model';
@@ -12,12 +12,14 @@ export class StartComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.checkIfLogged();
     console.log('start component');
+    this.cdr.detectChanges();
+    this.checkIfLogged();
   }
 
   checkIfLogged() {
@@ -45,7 +47,7 @@ export class StartComponent implements OnInit {
           this.router.navigate(['start/login']);
         }
       }, error => {
-        if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
+        if (error.status === 401) { this.userService.logOut(); this.router.navigate(['start/login']); }
         this.router.navigate(['start/login']);
       });
     } else {

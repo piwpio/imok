@@ -1,6 +1,7 @@
 export interface LoginForm {
   email: string;
   password: string;
+  master_login: boolean;
 }
 
 export interface PasswordResetForm {

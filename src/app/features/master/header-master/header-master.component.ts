@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
-import { filter } from 'rxjs/operators';
+import {filter} from 'rxjs/operators';
 import {UserService} from '../../../services/user.service';
 
 @Component({

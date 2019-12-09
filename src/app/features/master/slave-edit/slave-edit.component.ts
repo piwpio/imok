@@ -49,7 +49,7 @@ export class SlaveEditComponent implements OnInit {
           }
         );
       }, error => {
-        if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
+        if (error.status === 401) { this.userService.logOut(); this.router.navigate(['start/login']); }
         typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
       });
     });
@@ -66,19 +66,19 @@ export class SlaveEditComponent implements OnInit {
       this.showSnackbar('Zaktualizowano podopiecznego');
       this.router.navigate(['master/slaves']);
     }, error => {
-      if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
+      if (error.status === 401) { this.userService.logOut(); this.router.navigate(['start/login']); }
       typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }
 
   submitLogoutSlave(event: MouseEvent) {
     event.preventDefault();
-    this.userService.logoutSlave().subscribe(response => {
+    this.userService.logoutSlave({slave_id: this.slaveId}).subscribe(response => {
       if (!response.ok) { this.showSnackbar(response.message); return; }
       this.showSnackbar('Podopieczny został wylogowany na swoim urządzeniu');
       this.slave.isLogged = false;
     }, error => {
-      if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
+      if (error.status === 401) { this.userService.logOut(); this.router.navigate(['start/login']); }
       typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }

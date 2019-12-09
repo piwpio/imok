@@ -34,7 +34,7 @@ export class CreateSlaveComponent implements OnInit {
 
   ionViewWillEnter() {
     if (this.createSlaveForm) {
-      this.createSlaveForm.get('email').setValue('');
+      this.createSlaveForm.get('name').setValue('');
       this.createSlaveForm.get('password').setValue('');
       this.createSlaveForm.get('repassword').setValue('');
       this.createSlaveForm.get('phone').setValue('');
@@ -47,7 +47,7 @@ export class CreateSlaveComponent implements OnInit {
       this.showSnackbar('Utwórzono podopiecznego');
       this.router.navigate(['master/dashboard']);
     }, error => {
-      if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
+      if (error.status === 401) { this.userService.logOut(); this.router.navigate(['start/login']); }
       typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }

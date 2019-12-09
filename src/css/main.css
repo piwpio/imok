@@ -4,7 +4,7 @@ button {
 }
 button.mat-green {
   color: #FFFFFF;
-  background-color: #0EBE2C;
+  background-color: #29a53e;
 }
 button.mat-blue {
   color: #FFFFFF;
@@ -13,10 +13,6 @@ button.mat-blue {
 button.mat-white {
   color: #000000;
   background-color: #FFFFFF;
-}
-button.mat-red {
-  color: #FFFFFF;
-  background-color: #FF0000;
 }
 button.mat-stroked-botton.mat-white {
   height: 38px;
@@ -56,7 +52,7 @@ button.mat-mini-fab.mat-white {
   align-items: center;
   justify-content: center;
 }
-.flex-container > .flex-container-width-100-procent-wrapper, .width-100-procent-wrapper {
+.flex-container > .flex-container-width-100-procent-wrapper {
   width: 100%;
 }
 
@@ -64,7 +60,7 @@ button.mat-mini-fab.mat-white {
   position: fixed;
   width: 100%;
   height: 60px;
-  background-color: #0EBE2C;
+  background-color: #29a53e;
   text-align: center;
   color: #FFFFFF;
   font-size: 24px;

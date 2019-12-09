@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.login-button-container a {
+.login-button-container a, .login-button-container span {
   color: #106cc8;
 }
 

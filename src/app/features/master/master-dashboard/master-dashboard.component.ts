@@ -29,7 +29,7 @@ export class MasterDashboardComponent implements OnInit, OnDestroy {
       if (!response.ok) { this.showSnackbar(response.message); return; }
       this.slaves = response.data;
     }, error => {
-      if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
+      if (error.status === 401) { this.userService.logOut(); this.router.navigate(['start/login']); }
       typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
     });
   }

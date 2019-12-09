@@ -13,6 +13,7 @@ import {UserModel} from '../../../models/user.model';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  public masterLogin = true;
 
   constructor(
     private router: Router,
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.masterLogin = true;
     this.loginForm = this.formBuilder.group(
       {
         email: ['', Validators.required],
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.masterLogin = true;
     if (this.loginForm) {
       this.loginForm.get('email').setValue('');
       this.loginForm.get('password').setValue('');
@@ -39,6 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(loginFormValues: LoginForm) {
+    loginFormValues.master_login = this.masterLogin;
     this.userService.logIn(loginFormValues)
       .subscribe(response => {
         if (!response.ok) { this.showSnackbar(response.message); return; }
@@ -53,9 +57,13 @@ export class LoginComponent implements OnInit {
           isLogged: true
         };
         this.userService.setUser(user);
-        this.router.navigate(['master/dashboard']);
+        if (this.masterLogin) {
+          this.router.navigate(['master/dashboard']);
+        } else {
+          this.router.navigate(['slave/dashboard']);
+        }
       }, error => {
-        if (error.status === 401) {this.userService.logOut(); this.router.navigate(['start/login']);}
+        if (error.status === 401) { this.userService.logOut(); this.router.navigate(['start/login']); }
         typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
       });
   }
@@ -65,10 +73,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['start/createmaster']);
   }
 
-  goToPasswordReset(event: Event) {
-    event.preventDefault();
-    this.router.navigate(['start/passwordreset']);
-  }
+  // goToPasswordReset(event: Event) {
+  //   event.preventDefault();
+  //   this.router.navigate(['start/passwordreset']);
+  // }
 
   showSnackbar(message: string) {
     this.zone.run(() => {

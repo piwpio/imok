@@ -67,8 +67,9 @@ export class UserService {
     return this.http.post<any>(`${API_BASE_URL}/editslave`, body);
   }
 
-  logoutSlave(): Observable<any> {
-    return this.http.post<any>(`${API_BASE_URL}/logoutslave`, {token: this.user.token});
+  logoutSlave(body): Observable<any> {
+    body.token = this.user.token;
+    return this.http.post<any>(`${API_BASE_URL}/logoutslave`, body);
   }
 
   getSlave(body): Observable<any> {
@@ -84,5 +85,10 @@ export class UserService {
   deleteSlave(body): Observable<any> {
     body.token = this.user.token;
     return this.http.post<any>(`${API_BASE_URL}/deleteslave`, body);
+  }
+
+  isOk(body): Observable<any> {
+    body.token = this.user.token;
+    return this.http.post<any>(`${API_BASE_URL}/isok`, body);
   }
 }

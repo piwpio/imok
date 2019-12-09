@@ -7,6 +7,10 @@
 
 .logout-slave-button-container {
   margin-top:10px;
+  visibility: visible;
+  &.is-not-visible {
+    visibility: hidden;
+  }
   button {
     width: 100%;
   }

@@ -18,12 +18,6 @@ export class SlaveDashboardListElementComponent implements OnInit {
 
   ngOnInit(
   ) {
-    this.slave.actions = [{
-      lat: 50.0582514,
-      long: 19.947557,
-      time: 1575664894885,
-      isOk: true
-    }];
     this.lastLocation = this.slave.actions.length ? this.slave.actions[0] : null;
   }
 
@@ -32,6 +26,7 @@ export class SlaveDashboardListElementComponent implements OnInit {
   }
 
   goToMap(lat: number, long: number) {
+    console.log(lat, long);
     this.router.navigate(['master/slave-map', lat, long]);
   }
 }

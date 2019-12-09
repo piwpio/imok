@@ -12,9 +12,10 @@ import {CreateSlaveComponent} from './new-slave/create-slave.component';
 import {SlaveDashboardListElementComponent} from './slave-dashboard-list-element/slave-dashboard-list-element.component';
 import {SlaveEditComponent} from './slave-edit/slave-edit.component';
 import {SlaveComponent} from './slave/slave.component';
-import {AgmCoreModule, GoogleMapsAPIWrapper, MapsAPILoader} from '@agm/core';
+import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
 import {SlaveMapComponent} from './slave-map/slave-map.component';
 import {SlavesComponent} from './slaves/slaves.component';
+import {GOOGLE_MAPS_API_KEY} from '../../env';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import {SlavesComponent} from './slaves/slaves.component';
     MatSnackBarModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: GOOGLE_MAPS_API_KEY
     })
   ],
   providers: [

@@ -1,0 +1,15 @@
+.buttons-container .im-ok-button-container button {
+  width: 300px;
+  height: 300px;
+  font-size: 4em;
+}
+.buttons-container .im-not-ok-button-container button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 100px;
+  height: 100px;
+  font-size: 1.1em;
+}
+
+/*# sourceMappingURL=slave-dashboard.component.css.map */
