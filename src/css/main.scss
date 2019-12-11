@@ -14,6 +14,11 @@ button {
     background-color: $imok-blue;
   }
 
+  &.mat-red {
+    color: $imok-white;
+    background-color: $imok-red;
+  }
+
   &.mat-white {
     color: $imok-black;
     background-color: $imok-white;

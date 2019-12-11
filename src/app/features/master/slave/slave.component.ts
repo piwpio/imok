@@ -70,6 +70,7 @@ export class SlaveComponent implements OnInit {
     this.userService.manageSlave(slaveManageForm).subscribe(response => {
       if (!response.ok) { this.showSnackbar(response.message); return; }
       this.showSnackbar('Zaktualizowano podopiecznego');
+      this.router.navigate(['master/dashboard']);
     }, error => {
       if (error.status === 401) { this.userService.logOut(); this.router.navigate(['start/login']); }
       typeof error.error === 'string' ? this.showSnackbar(error.error) : this.showSnackbar(error.message);
